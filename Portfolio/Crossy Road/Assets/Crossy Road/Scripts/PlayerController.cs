@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         if (!Manager.instance.CanPlay()) return;
 
         if (isDead) return;
-        
+
         CanIdle();
         CanMove();
 
@@ -50,21 +50,34 @@ public class PlayerController : MonoBehaviour
     {
         if (isIdle)
         {
-            if (isAnyArrowPressDown())
+            if (Input.GetKeyDown(KeyCode.W))
             {
-                CheckIfCanMove();
-
-                PlayAudioClip(audioIdel1);
+                CheckIfIdle(270, 0, 0);
             }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                CheckIfIdle(270, 180, 0);
+            }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                CheckIfIdle(270, -90, 0);
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                CheckIfIdle(270, 90, 0);
+            }
+
+
         }
     }
-    bool isAnyArrowPressDown()
+    void CheckIfIdle(float x, float y, float z)
     {
-        return (Input.GetKeyDown(KeyCode.W) ||
-                Input.GetKeyDown(KeyCode.S) ||
-                Input.GetKeyDown(KeyCode.A) ||
-                Input.GetKeyDown(KeyCode.D));
+        chick.transform.rotation = Quaternion.Euler(x, y, z);
+        CheckIfCanMove();
+
+        if (Random.value < .4f) PlayAudioClip(audioIdel1);
     }
+
     void CheckIfCanMove()
     {
         RaycastHit hit;
@@ -73,13 +86,15 @@ public class PlayerController : MonoBehaviour
                         out hit,
                         colliderDistCheck);
         Debug.DrawRay(this.transform.position,
-            -chick.transform.up*colliderDistCheck,
+            -chick.transform.up * colliderDistCheck,
             Color.red,
-            duration:2);
+            duration: 2);
 
         if (hit.collider?.tag == "collider")
         {
             Debug.Log("Hit something forword.");
+
+            isIdle = true;
         }
         else
         {
@@ -92,23 +107,27 @@ public class PlayerController : MonoBehaviour
 
         isIdle = false;
         isMoving = true;
-        jumpStart = true; 
+        jumpStart = true;
     }
     void CanMove()
     {
         if (isMoving)
-        { 
-            if (Input.GetKeyUp(KeyCode.W)){
+        {
+            if (Input.GetKeyUp(KeyCode.W))
+            {
                 Moving(new Vector3(0, 0, moveDistance));
                 SetMoveForwardsState();
             }
-            else if (Input.GetKeyUp(KeyCode.S)){
-                Moving(new Vector3(0,0, -moveDistance));
+            else if (Input.GetKeyUp(KeyCode.S))
+            {
+                Moving(new Vector3(0, 0, -moveDistance));
             }
-            else if (Input.GetKeyUp(KeyCode.A)){
+            else if (Input.GetKeyUp(KeyCode.A))
+            {
                 Moving(new Vector3(-moveDistance, 0, 0));
             }
-            else if (Input.GetKeyUp(KeyCode.D)){
+            else if (Input.GetKeyUp(KeyCode.D))
+            {
                 Moving(new Vector3(moveDistance, 0, 0));
             }
         }
@@ -123,7 +142,7 @@ public class PlayerController : MonoBehaviour
         PlayAudioClip(audioHop);
 
         LeanTween
-            .move(this.gameObject, transform.position+delta, moveTime)
+            .move(this.gameObject, transform.position + delta, moveTime)
             .setOnComplete(MoveComplite);
     }
     void MoveComplite()
@@ -131,7 +150,7 @@ public class PlayerController : MonoBehaviour
         isJumping = false;
         isIdle = true;
 
-        PlayAudioClip(audioIdel2);
+        if (Random.value < .4f) PlayAudioClip(audioIdel2);
     }
 
     void SetMoveForwardsState()
@@ -140,7 +159,7 @@ public class PlayerController : MonoBehaviour
     }
     void IsVisible()
     {
-        if(renderer.isVisible)
+        if (renderer.isVisible)
         {
             isVisible = true;
         }
