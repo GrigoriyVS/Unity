@@ -5,6 +5,8 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     public int coinValue = 1;
+    public GameObject coin = null;
+    public AudioClip audioClip = null;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,7 +16,12 @@ public class Coin : MonoBehaviour
 
             Manager.instance.UpdateCoinCount(coinValue);
 
-            Destroy(this.gameObject);
+            
+            this.GetComponent<AudioSource>().PlayOneShot(audioClip);
+
+            coin.SetActive(false);
+
+            Destroy(this.gameObject, audioClip.length);
         }
     }
     
