@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 6583406}
   - component: {fileID: 2389946}
   - component: {fileID: 5450134}
+  - component: {fileID: 6526497799257331465}
   m_Layer: 0
   m_Name: trafficLight (1)
   m_TagString: Untagged
@@ -193,6 +194,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6526497799257331465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9294f29f6405b4615ac204cd0df1c055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light: {fileID: 176258}
 --- !u!1 &121808
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,6 +301,7 @@ GameObject:
   - component: {fileID: 6532830}
   - component: {fileID: 2381732}
   - component: {fileID: 5411338}
+  - component: {fileID: 7443548281368899855}
   m_Layer: 0
   m_Name: trafficLight
   m_TagString: Untagged
@@ -386,6 +401,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7443548281368899855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9294f29f6405b4615ac204cd0df1c055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light: {fileID: 193030}
 --- !u!1 &124058
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,6 +1059,7 @@ GameObject:
   - component: {fileID: 6576790}
   - component: {fileID: 2343248}
   - component: {fileID: 5457420}
+  - component: {fileID: 5156595892259186906}
   m_Layer: 0
   m_Name: trafficLight (1)
   m_TagString: Untagged
@@ -1130,6 +1159,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5156595892259186906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9294f29f6405b4615ac204cd0df1c055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light: {fileID: 184264}
 --- !u!1 &170558
 GameObject:
   m_ObjectHideFlags: 0
